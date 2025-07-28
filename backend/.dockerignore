@@ -1,0 +1,26 @@
+# Bytecode & build artifacts
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+
+# Environment configs
+.env
+*.env
+
+# VCS & metadata
+.git/
+.gitignore
+.DS_Store
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+
+# Docker artifacts
+Dockerfile
+docker-compose.yml
+.dockerignore
+
