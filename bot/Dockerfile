@@ -6,4 +6,4 @@ COPY ./app /bot/app
 
 RUN pip install -r /bot/app/requirements.txt
 
-CMD ["python", "/bot/app/main.py"]
+CMD ["python", "/app/main.py"]
