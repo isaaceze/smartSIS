@@ -1,11 +1,20 @@
 FROM python:3.11-slim
-RUN apt-get update && apt-get install -y curl
 
+# Set working directory inside the container
 WORKDIR /app
 
-COPY requirements.txt /app/requirements.txt
+# Install system dependencies
+RUN apt-get update && apt-get install -y curl
 
+# Copy dependency file and install Python packages
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-COPY ./app /app
 
-CMD ["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Copy the entire backend contents (including app/, main.py, etc.)
+COPY . .
+
+# Make sure Python can find the 'app' package
+ENV PYTHONPATH=/app
+
+# Launch FastAPI using Uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
